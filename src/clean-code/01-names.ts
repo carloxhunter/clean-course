@@ -26,27 +26,20 @@ import fs from 'fs';
 
   // Todo: Tarea
 
-  // día de hoy - today
   const today = new Date();
 
-  // días transcurridos - elapsed time in days
   const daysSince: number = 23;
   // R: const elapsedTimeInDays: number = 23;
 
-  // número de archivos en un directorio - number of files in directory
   const numberOfFilesInDirectory = 33;
 
-  // primer nombre - first name
   const firstName = 'Fernando';
 
-  // primer apellido - last name
   const latName = 'Herrera';
 
-  // días desde la última modificación - days since modification
   const daysSinceLastUpdate = 12;
  // R:  const daysSinceLastModification = 12;
 
-  // cantidad máxima de clases por estudiante - max classes per student
   const studentMaximunAmountOfClasses = 6;
   // R: const macClassesPerStudent = 6;
 
