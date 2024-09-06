@@ -11,33 +11,50 @@
       public type: HtmlType,
     ) { }
   }
-
-  class InputAttributes extends HtmlElement {
+  class InputAttributes {
+    public value: string;
+    public placeholder: string;
     constructor(
-      public value: string,
-      public placeholder: string,
-      id: string,
+      value: string,
+      placeholder: string,
     ) {
-      super(id, 'input');
+      this.value = value;
+      this.placeholder = placeholder;
     }
   }
 
-  class InputEvents extends InputAttributes {
-    constructor(value: string, placeholder: string, id: string) {
-      super(value, placeholder, id);
-    }
 
-    setFocus() { };
+  class InputEvents {
+    constructor() {}
+
+    setFocus() { }
     getValue() { };
     isActive() { };
     removeValue() { };
   }
 
 
-  //? Idea para la nueva clase InputElement
+  interface InputElementProps {
+    value: string;
+    placeholder: string;
+    id: string;
+  }
 
-  const nameField = new InputEvents('Fernando', 'Enter first name', 'txtName');
+  class InputElement {
+    private htmlElement: HtmlElement;
+    private inputAttributes: InputAttributes;
+    private inputEvents: InputEvents;
 
-  console.log({ nameField });
+    constructor({ value, placeholder, id }: InputElementProps) {
+      this.htmlElement = new HtmlElement(id, 'input');
+      this.inputAttributes = new InputAttributes(value, placeholder);
+      this.inputEvents = new InputEvents();
+    }
+  }
+  
+
+  const jonElement = new InputElement({value:'Fernando', placeholder:'Enter first name', id:'txtName'});
+
+  console.log({ jonElement });
 
 })()
