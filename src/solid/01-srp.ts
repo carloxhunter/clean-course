@@ -26,18 +26,23 @@
 
   class ProductBloc {
 
+    private productServices: ProductServices;
+    private mailer: Mailer;
+    constructor( productServices: ProductServices, mailer: Mailer) {
+      this.productServices = productServices;
+      this.mailer = mailer;
+    }
+
     loadProduct(id: number) {
-      // Realiza un proceso para obtener el producto y retornarlo
-      console.log('Producto: ', { id, name: 'OLED Tv' });
+      this.productServices.getProduct(id);
     }
 
     saveProduct(product: Product) {
-      // Realiza una petición para salvar en base de datos 
-      console.log('Guardando en base de datos', product);
+      this.productServices.saveProduct(product)
     }
 
     notifyClients() {
-      console.log('Enviando correo a los clientes');
+      this.mailer.sendEmail(['john@gmail.com'], 'Nuevo producto Template');
     }
   }
 
@@ -47,8 +52,10 @@
     }
   }
 
+  const productServices = new ProductServices();
+  const mailer = new Mailer();
 
-  const productBloc = new ProductBloc();
+  const productBloc = new ProductBloc(productServices, mailer);
   const cartBloc = new CartBloc();
 
   productBloc.loadProduct(10);
